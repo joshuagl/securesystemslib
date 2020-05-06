@@ -316,6 +316,7 @@ def export_pubkey(hsm_info, hsm_key_id, scheme, sslib_key_id):
       key_object, [PyKCS11.CKA_KEY_TYPE])[0]
 
   if hsm_key_type != PyKCS11.CKK_EC:
+    # TODO: raise an sslib error here
     raise ValueError("passed scheme '{}' requires a key of type '{}', "
         "found key of type '{}' {}".format(
         scheme,
