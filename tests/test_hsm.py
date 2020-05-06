@@ -20,6 +20,7 @@ import shutil
 import unittest
 import tempfile
 
+# TODO: not clear that this is true
 if not six.PY2:
   # These modules are not available on Python 2
   import PyKCS11

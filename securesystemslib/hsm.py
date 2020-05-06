@@ -46,8 +46,7 @@ import six
 import logging
 import binascii
 
-if not six.PY2:
-  import asn1crypto.keys
+import asn1crypto.keys
 
 import securesystemslib.formats
 import securesystemslib.hash
