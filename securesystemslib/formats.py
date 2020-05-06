@@ -440,6 +440,24 @@ ANY_PUBKEY_DICT_SCHEMA = SCHEMA.DictOf(
   key_schema = KEYID_SCHEMA,
   value_schema = ANY_PUBKEY_SCHEMA)
 
+# Information on a HSM
+HSM_INFO_SCHEMA = SCHEMA.Object(
+  object_name = "HSM_INFO_SCHEMA",
+  slot_id = SCHEMA.Integer(lo=0),
+  slot_description = SCHEMA.AnyString(),
+  manufacturer_id = SCHEMA.AnyString(),
+  hardware_version = SCHEMA.AnyString(),
+  firmware_version = SCHEMA.AnyString(),
+  flags = SCHEMA.AnyString(),
+  )
+
+# A key stored in a HSM
+HSM_KEY_INFO_SCHEMA = SCHEMA.Object(
+  object_name = "HSM_KEY_INFO_SCHEMA",
+  key_id = KEYID_SCHEMA,
+  label = SCHEMA.AnyString(),
+  )
+
 
 
 

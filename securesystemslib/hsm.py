@@ -213,7 +213,7 @@ def get_keys_on_hsm(hsm_info, user_pin=None):
   if not PKCS11_DYN_LIB:
     raise UnsupportedLibraryError(NO_PKCS11_DYN_LIB_MSG)
 
-  # TODO: securesystemslib.formats.HSM_INFO_SCHEMA.check_match(hsm_info)
+  securesystemslib.formats.HSM_INFO_SCHEMA.check_match(hsm_info)
 
   if user_pin:
     securesystemslib.formats.PASSWORD_SCHEMA.check_match(user_pin)
@@ -285,8 +285,8 @@ def export_pubkey(hsm_info, hsm_key_id, scheme, sslib_key_id):
   if not PKCS11_DYN_LIB:
     raise UnsupportedLibraryError(NO_PKCS11_DYN_LIB_MSG)
 
-  #TODO: securesystemslib.formats.HSM_INFO_SCHEMA.check_match(hsm_info)
-  #TODO: securesystemslib.formats.HSM_KEY_ID_SCHEMA.check_match(hsm_key_id)
+  securesystemslib.formats.HSM_INFO_SCHEMA.check_match(hsm_info)
+  securesystemslib.formats.HSM_KEY_ID_SCHEMA.check_match(hsm_key_id)
   securesystemslib.formats.ECDSA_SCHEME_SCHEMA.check_match(scheme)
   securesystemslib.formats.KEYID_SCHEMA.check_match(sslib_key_id)
 
@@ -401,8 +401,8 @@ def create_signature(hsm_info, hsm_key_id, user_pin, data, scheme,
   if not PKCS11_DYN_LIB:
     raise UnsupportedLibraryError(NO_PKCS11_DYN_LIB_MSG)
 
-  #TODO: securesystemslib.formats.HSM_INFO_SCHEMA.check_match(hsm_info)
-  #TODO: securesystemslib.formats.HSM_KEY_ID_SCHEMA.check_match(hsm_key_id)
+  securesystemslib.formats.HSM_INFO_SCHEMA.check_match(hsm_info)
+  securesystemslib.formats.HSM_KEY_ID_SCHEMA.check_match(hsm_key_id)
   securesystemslib.formats.PASSWORD_SCHEMA.check_match(user_pin)
   securesystemslib.formats.DATA_SCHEMA.check_match(data)
   securesystemslib.formats.ECDSA_SCHEME_SCHEMA.check_match(scheme)
