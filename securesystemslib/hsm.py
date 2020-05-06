@@ -55,7 +55,7 @@ from securesystemslib.exceptions import UnsupportedLibraryError
 
 logger = logging.getLogger(__name__)
 
-#Boolean to indicate if optional pyca cryptography library is available
+# Boolean to indicate if optional pyca cryptography library is available
 CRYPTO = True
 # Module global to hold an instance of PyKCS11.PyKCS11Lib. If it remains 'None'
 # it means that the PyKCS11 library is not available.
@@ -115,11 +115,12 @@ def load_pkcs11_lib(path=None):
             the PyKCS11 will read the 'PYKCS11LIB' environment variable.
 
   <Exceptions>
-    UnsupportedLibraryError if the PyKCS11 library is not available.
+    securesystemslib.exceptions.UnsupportedLibraryError, if the PyKCS11 library
+    is not available.
 
-    PyKCS11.PyKCS11Error if the PKCS11 dynamic library cannot be loaded.
+    PyKCS11.PyKCS11Errorm if the PKCS11 dynamic library cannot be loaded.
 
-     FormatError if the argument is malformed.
+    securesystemslib.exceptions.FormatError, if the argument is malformed.
 
   <Side Effects>
     Loads the PKCS#11 shared object on the PKCS11 module global.
@@ -152,14 +153,16 @@ def load_pkcs11_lib(path=None):
 def get_hsms():
   """
   <Purpose>
-    Iterate over HSM slots and return list with info for each HSM.
+    Iterate over HSM slots and return å list of items matching
+    securesystemslib.formats.HSM_INFO_SCHEMA with info for each HSM.
 
   <Exceptions>
-    UnsupportedLibraryError if the PyKCS11 library is not available or the
-    PKCS#11 shared object could not be loaded.
+    securesystemslib.exceptions.UnsupportedLibraryError, if the PyKCS11 library
+    is not available or the PKCS#11 shared object could not be loaded.
 
   <Return>
-    List of HSM info dictionaries conforming to HSM_INFO_SCHEMA.
+    List of HSM info dictionaries conforming to
+    securesystemslib.formats.HSM_INFO_SCHEMA.
 
   """
   if PKCS11 is None: # pragma: no cover
@@ -198,10 +201,10 @@ def get_keys_on_hsm(hsm_info, user_pin=None):
             A string to log into the HSM. Only required for private key infos.
 
   <Exceptions>
-    UnsupportedLibraryError if the PyKCS11 library is not available or the
-    PKCS#11 shared object could not be loaded.
+    securesystemslib.exceptions.UnsupportedLibraryError, if the PyKCS11 library
+    is not available or the PKCS#11 shared object could not be loaded.
 
-    FormatError if arguments are malformed.
+    securesystemslib.exceptions.FormatErrorm if arguments are malformed.
 
   <Returns>
     List of dictionaries conforming to HSM_KEY_INFO_SCHEMA.
@@ -267,10 +270,11 @@ def export_pubkey(hsm_info, hsm_key_id, scheme, sslib_key_id):
             can assign any keyid they want.
 
   <Exceptions>
-    UnsupportedLibraryError if the PyKCS11 or cryptography libraries are not
-    available or the PKCS#11 shared object could not be loaded.
+    securesystemslib.exceptions.UnsupportedLibraryError, if the PyKCS11 or
+    cryptography libraries are not available or the PKCS#11 shared object could
+    not be loaded.
 
-    FormatError if arguments are malformed.
+    securesystemslib.exceptions.FormatError, if arguments are malformed.
 
   <Returns>
     An ECDSA public key dictionary conforming to PUBLIC_KEY_SCHEMA.
@@ -383,10 +387,11 @@ def create_signature(hsm_info, hsm_key_id, user_pin, data, scheme,
             'keyid' field.
 
   <Exceptions>
-    UnsupportedLibraryError if the PyKCS11 or cryptography libraries are not
-    available or the PKCS#11 shared object could not be loaded.
+    securesystemslib.exceptions.UnsupportedLibraryError, if the PyKCS11 or
+    cryptography libraries are not available or the PKCS#11 shared object could
+    not be loaded.
 
-    FormatError if arguments are malformed.
+    securesystemslib.exceptions.FormatError, if arguments are malformed.
 
   <Returns>
     A signature dictionary conforming to SIGNATURE_SCHEMA.
